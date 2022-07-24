@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <!-- info on how to get fonts here https://stackoverflow.com/questions/18178867/how-can-i-use-googles-roboto-font-on-a-website -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
+</head>
+<body style="background-color: black; color: rgb(71, 252, 71); font-family: 'Space Mono';">
+    <h3>Scratch project to explore the html canvas</h3>
+    <p>The HTML &lt;canvas&gt; element is used to draw graphics, on the fly, via JavaScript.</p>
+    <p>Note: Always specify an id attribute (to be referred to in a script), and a width and height attribute to define the size of the canvas. To add a border, use the style attribute.</p>
+    
+    <canvas id="myCanvas" width="400" height="400" style="border: 1px solid">      
+
+    </canvas>
+</body>
+</html>
+
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");    
+    ctx.fillStyle = '#F9DC5C';
+    ctx.fillRect(100, 100, 150, 100);
+</script>
+
+<!-- <script>
+    var canvas = document.getElementById("my-canvas");
+    var context = canvas.getContext("2d");
+    context.moveTo(0,0);
+    context.moveTo(400,400);
+    context.stroke();
+</script> -->
