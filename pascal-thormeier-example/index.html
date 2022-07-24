@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      canvas {
+        box-sizing: border-box;
+        border: 1px solid #000;
+        width: 800px;
+        height: 800px;
+      }
+
+      .container {
+        box-sizing: border-box;
+        width: 800px;
+        border: 1px solid #000;
+        margin-top: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Conway's game of life on a canvas</h1>
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <div class="container">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="step">Step</button>
+    </div>
+
+    <div class="container">
+      <button id="reset">Reset to empty</button>
+      <button id="glider">Set single glider</button>
+      <button id="random">Random (35% alive)</button>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
