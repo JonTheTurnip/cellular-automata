@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <p>Let's try and draw alternate colored squares on a canvas</p>
+    <canvas
+      id="myCanvas"
+      width="400"
+      height="400"
+      style="border: 1px solid"
+    ></canvas>
+  </body>
+</html>
+
+<script type="text/javascript">
+  // 1. get the width and height (offsetwidth includes border so use client width)
+  var canvas = document.getElementById("myCanvas");
+  var width = canvas.clientWidth;
+  var height = canvas.clientHeight;
+
+  console.log({ width, height });
+
+  // 2. check it's a square
+  if (width != height) {
+    throw "it's not a square, goodbye.";
+  }
+
+  // 3. Need an array to represent all the coordinates
+  // https://www.javascripttutorial.net/javascript-multidimensional-array/
+  var cell = 40;
+  var units = width / cell;
+  console.log({ units });
+  var outerarray = [];
+  var counter = 1;
+
+  for (let i = 0; i < units; i++) {
+    var innerarray = [];
+    outerarray[i] = innerarray;
+
+    for (let j = 0; j < units; j++) {
+      if (counter % 2 == 0) {
+        innerarray[j] = true; //[i, j, true]
+      } else {
+        innerarray[j] = false; // [i, j, false]
+      }
+
+      counter++;
+    }
+  }
+  console.table(outerarray);
+
+  // 4. Now we can color in alternate small squares within the canvas
+
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "black";
+
+  for (let i = 0; i < units; i++) {
+    for (let j = 0; j < units; j++) {
+      //console.log({ i, j})
+      if (outerarray[i][j]) {
+        ctx.fillRect(i * cell, j * cell, cell, cell);
+      }
+    }
+  }
+</script>
+
+<!-- <script type="text/javascript">
+    // if it's 400*400 then we can have four squares
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0, 200, 200);
+    ctx.fillRect(200,200, 200, 200);
+
+
+</script> -->
