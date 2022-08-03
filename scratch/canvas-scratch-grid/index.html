@@ -38,21 +38,19 @@
   var units = width / cell;
   console.log({ units });
   var outerarray = [];
-  var counter = 1;
+  var outertoggle = true;
 
   for (let i = 0; i < units; i++) {
     var innerarray = [];
     outerarray[i] = innerarray;
+    var innertoggle = outertoggle;
 
     for (let j = 0; j < units; j++) {
-      if (counter % 2 == 0) {
-        innerarray[j] = true; //[i, j, true]
-      } else {
-        innerarray[j] = false; // [i, j, false]
-      }
-
-      counter++;
+      innerarray[j] = innertoggle;
+      innertoggle = !innertoggle;
     }
+
+    outertoggle = !outertoggle;
   }
   console.table(outerarray);
 
@@ -65,19 +63,9 @@
     for (let j = 0; j < units; j++) {
       //console.log({ i, j})
       if (outerarray[i][j]) {
-        ctx.fillRect(i * cell, j * cell, cell, cell);
+        ctx.fillRect(j * cell, i * cell, cell, cell);
       }
     }
   }
 </script>
 
-<!-- <script type="text/javascript">
-    // if it's 400*400 then we can have four squares
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0,0, 200, 200);
-    ctx.fillRect(200,200, 200, 200);
-
-
-</script> -->
